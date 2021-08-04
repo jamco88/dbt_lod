@@ -1,6 +1,21 @@
+with orders as (
+    select * from {{ ref('stg_orders') }}
+),
+
+customers as (
+    select * from {{ ref('stg_customers') }}
+),
+
+payments as (
+    select * from {{ ref('stg_payments') }}
+)
+
+
 select
-    x
+    orders.order_id,
+    customers.customer_id,
+    payments.dollar_amount as amount
 from
-    y
-where
-    z
+    orders 
+    left join customers using (customer_id)
+    left join payments using (order_id)
