@@ -19,6 +19,7 @@ models:
           - unique
           - not_null 
       - name: status
+        description: "{{ doc('order_status') }}"
         tests:
           - accepted_values:
               values:
@@ -32,6 +33,7 @@ models:
           - relationships:
               to: ref('stg_customers')
               field: customer_id
+
   - name: stg_payments
     columns:
       - name: payment_method
