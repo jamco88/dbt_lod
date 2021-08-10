@@ -2,19 +2,24 @@ version: 2
 
 models:
   - name: stg_customers
+    description: Customer details staging table
     columns: 
       - name: customer_id
+        description: Primary key for stg_customers
         tests:
           - unique
           - not_null
 
   - name: stg_orders
+    description: Order details staging table
     columns:
       - name: order_id
+        description: Primary key for stg_orders
         tests:
           - unique
           - not_null 
       - name: status
+        description: "{{ doc('order_status') }}"
         tests:
           - accepted_values:
               values:
@@ -28,9 +33,12 @@ models:
           - relationships:
               to: ref('stg_customers')
               field: customer_id
+
   - name: stg_payments
+    description: Payment staging table
     columns:
       - name: payment_method
+        description: "{{ doc('payment_paymentmethod') }}"
         tests:
           - accepted_values:
               values:
