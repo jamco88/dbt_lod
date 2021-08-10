@@ -35,8 +35,10 @@ models:
               field: customer_id
 
   - name: stg_payments
+    description: Payment staging table
     columns:
       - name: payment_method
+        description: "{{ doc('payment_paymentmethod') }}"
         tests:
           - accepted_values:
               values:
