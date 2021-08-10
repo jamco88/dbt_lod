@@ -2,15 +2,19 @@ version: 2
 
 models:
   - name: stg_customers
+    description: Customer details staging table
     columns: 
       - name: customer_id
+        description: Primary key for stg_customers
         tests:
           - unique
           - not_null
 
   - name: stg_orders
+    description: Order details staging table
     columns:
       - name: order_id
+        description: Primary key for stg_orders
         tests:
           - unique
           - not_null 
