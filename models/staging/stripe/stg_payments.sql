@@ -1,4 +1,4 @@
-select
+with payments as (select
     id,
     orderid as order_id,
     paymentmethod as payment_method,
@@ -7,6 +7,9 @@ select
     created as created,
     date_trunc('second', _batched_at) as batched_at
 from
-    raw.stripe.payment
+    {{ source('stripe', 'payment')}}
+    )
+
+select * from payments
 
 
