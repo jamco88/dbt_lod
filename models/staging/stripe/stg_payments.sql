@@ -7,7 +7,7 @@ with payments as (select
     created as created,
     date_trunc('second', _batched_at) as batched_at
 from
-    {{ source('stripe', 'payments')}}
+    {{ source('stripe', 'payment')}}
     )
 
 select * from payments
